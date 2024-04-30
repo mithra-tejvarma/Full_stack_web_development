@@ -1,0 +1,2 @@
+Hello welcome to this repository
+In this i will practise full stack programming along with some projects
