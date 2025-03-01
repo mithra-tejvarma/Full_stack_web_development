@@ -62,5 +62,66 @@ int main()
     return 0;
 }
     </pre>
+     <h1>SJF Scheduling Algorithm</h1>
+    <p>The following C program implements the SJF scheduling algorithm.</p>
+    <pre>
+#include&lt;stdio.h&gt;
+#include&lt;conio.h&gt;
+int main()
+{
+    int n,bt[10],wt[10],tat[10],ct[10],p[10],sum,i,j,k,temp;
+    float totaltat=0,totalwt=0;
+    printf("\nenter the no.of process:");
+    scanf("%d",&n);
+    printf("\nenter the process number:");
+    for(i=0;i&lt;n;i++)
+        scanf("%d",&p[i]);
+    printf("\nenter the burst time:");
+    for(i=0;i&lt;n;i++)
+    {
+        scanf("%d",&bt[i]);
+    }
+    for (i=0;i&lt;n;i++)
+    {
+        for(j=0;j&lt;n-i-1;j++)
+        {
+            if(bt[j]&gt;bt[j+1])
+            {
+                temp=bt[j];
+                bt[j]=bt[j+1];
+                bt[j+1]=temp;
+                temp=p[j];
+                p[j]=p[j+1];
+                p[j+1]=temp;
+            }
+        }
+    }
+    sum=0;
+    for(j=0;j&lt;n;j++)
+    {
+        sum=sum+bt[j];
+        ct[j]=sum;
+        printf("%d\t",ct[j]);
+    }
+    for(k=0;k&lt;n;k++)
+    {
+        tat[k]=ct[k];
+        totaltat=totaltat+tat[k];
+    }
+    for(k=0;k&lt;n;k++)
+    {
+        wt[k]=tat[k]-bt[k];
+        totalwt=totalwt+wt[k];
+    }
+    printf("\nprocess\tbt\ttat\twt\n\n\n");
+    for(i=0;i&lt;n;i++)
+    {
+        printf("\n%d\t%d\t%d\t%d",i+1,bt[i],tat[i],wt[i]);
+    }
+    printf("\n avg tat:%f",totaltat);
+    printf("\n avg wt:%f",totalwt);
+    return 0;
+}
+    </pre>
 </body>
 </html>
