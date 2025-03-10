@@ -123,5 +123,72 @@ int main()
     return 0;
 }
     </pre>
+    <h1>8 bit binary program</h1>
+    <p>Binary program</p>
+    <pre>
+
+def binary_to_decimal(binary_str):
+    """Convert an 8-bit binary string to a decimal integer."""
+    return int(binary_str, 2)
+
+def calculate_checksum(data_list):
+    """Calculate the UDP checksum for given binary data strings."""
+    total_sum = sum(binary_to_decimal(data) for data in data_list)
+
+    # If sum exceeds 8 bits, wrap around
+    while total_sum > 0xFF:
+        total_sum = (total_sum & 0xFF) + (total_sum >> 8)
+
+    # Take 1's complement
+    checksum = ~total_sum & 0xFF
+
+    # Convert to 8-bit binary string
+    return format(checksum, '08b')
+
+def verify_checksum(data_list, checksum):
+    """Verify the UDP checksum."""
+    total_sum = binary_to_decimal(checksum)  # Start with checksum
+
+    # Add all binary data
+    total_sum += sum(binary_to_decimal(data) for data in data_list)
+
+    # If sum exceeds 8 bits, wrap around
+    while total_sum > 0xFF:
+        total_sum = (total_sum & 0xFF) + (total_sum >> 8)
+
+    # Check if result is all 1s (255 in decimal or 0xFF)
+    return total_sum == 0xFF
+
+# Main program
+n = int(input("Enter the number of data items: "))
+
+data_list = []
+for i in range(n):
+    binary_data = input(f"Enter binary data {i + 1}: ")
+    
+    if len(binary_data) != 8 or not all(bit in '01' for bit in binary_data):
+        print("Error: Binary data must be exactly 8 bits (0s and 1s).")
+        exit(1)
+    
+    data_list.append(binary_data)
+
+# Calculate checksum
+checksum = calculate_checksum(data_list)
+print("UDP Checksum:", checksum)
+
+# Verify checksum
+if verify_checksum(data_list, checksum):
+    print("Checksum veTakes the 1's complement to get the checksum.")
+
+
+
+#2. Checksum Verification:
+
+#Adds the checksum to the original sum.
+if verify_checksum(data_list,checksum):
+    print("checksum verification successful! Data is valid.")
+else:
+    print("Checksum verification failed! Data is corrupted")
+    </pre>
 </body>
 </html>
