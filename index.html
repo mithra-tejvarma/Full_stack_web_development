@@ -190,5 +190,183 @@ if verify_checksum(data_list,checksum):
 else:
     print("Checksum verification failed! Data is corrupted")
     </pre>
+     <h1>FCFS (First-Come, First-Served) Scheduling Algorithm</h1>
+    <p>The following C program implements the FCFS scheduling algorithm.</p>
+    <pre>
+def factorial(n):
+   if n==0:
+      return 1
+   else:
+      result=1
+      for i in range(1,n+1):
+        result*=i
+      return result
+
+def is_strong(number):
+    sum_of_factorials=0
+    original_number=number
+    while number>0:
+       digit=number%10
+       sum_of_factorials+=factorial(digit)
+       number//=10
+    return original_number==sum_of_factorials
+
+a=int(input("enter a number:") )
+if is_strong(a):
+  print(f"{a} is a strong number")
+else:
+   print(f"{a} is not a strong number")        
+    </pre>
+     <h1>FCFS (First-Come, First-Served) Scheduling Algorithm</h1>
+    <p>The following C program implements the FCFS scheduling algorithm.</p>
+    <pre>
+class list_class():
+  def __init__(self):
+    self.listdata=[]
+  def add_val(self,a):
+    self.listdata.append(a)
+
+  def remove_val(self,b):
+    if b in self.listdata:
+      self.listdata.remove(b)
+    else:
+      print(f"{b} value not in list")
+  def display_val(self):
+    return(self.listdata)
+    
+my_instance=list_class()
+
+choice_val=1
+print("list operation menu")
+print("-------------------")
+while choice_val!=0:
+  print("0.exit")
+  print("1.add element")
+  print("2.remove element")
+  print("3.display list")
+  choice_val=int(input("enter  your choice:"))
+  if choice_val==1:
+    n=input("enter element to add the list:")
+    my_instance.add_val(n)
+    print("list:",my_instance.display_val())
+  elif choice_val==2:
+    n=input("enter element to delete the list:")
+    my_instance.remove_val(n)
+    print("list:",my_instance.display_val())
+  elif choice_val==3:
+    print("list:",my_instance.display_val())
+  elif choice_val==0:
+    print("exit")
+  else:
+    print("invalid menu choice")
+  print()
+
+    </pre>
+ 
+  <h1>FCFS (First-Come, First-Served) Scheduling Algorithm</h1>
+    <p>The following C program implements the FCFS scheduling algorithm.</p>
+    <pre>
+        num=int(input("entr a number:"))
+
+flag=False
+if num==0 or num==1:
+    print(num,"is not a prime nmuber")
+elif num>1:
+    for i in range(2,num):
+        if(num%i)==0:
+           flag=True
+           break
+    if flag:
+        print(num,"is not a prime number")
+    else:
+        print(num,"is a prime number")    
+    </pre>
+     <h1>FCFS (First-Come, First-Served) Scheduling Algorithm</h1>
+    <p>The following C program implements the FCFS scheduling algorithm.</p>
+    <pre>
+num=int(input("enter a number:"))
+sum=0
+
+temp=num
+while temp>0:
+    digit=temp%10
+    sum+=digit**3
+    temp//=10
+if num==sum:
+    print(num,"is an armstrong")
+else:
+    print(num,"is not an armstrong")
+ </pre>
+  <h1>FCFS (First-Come, First-Served) Scheduling Algorithm</h1>
+    <p>The following C program implements the FCFS scheduling algorithm.</p>
+    <pre>
+        
+
+def binary_to_decimal(binary_str):
+    """Convert an 8-bit binary string to a decimal integer."""
+    return int(binary_str, 2)
+
+def calculate_checksum(data_list):
+    """Calculate the UDP checksum for given binary data strings."""
+    total_sum = sum(binary_to_decimal(data) for data in data_list)
+
+    # If sum exceeds 8 bits, wrap around
+    while total_sum > 0xFF:
+        total_sum = (total_sum & 0xFF) + (total_sum >> 8)
+
+    # Take 1's complement
+    checksum = ~total_sum & 0xFF
+
+    # Convert to 8-bit binary string
+    return format(checksum, '08b')
+
+def verify_checksum(data_list, checksum):
+    """Verify the UDP checksum."""
+    total_sum = binary_to_decimal(checksum)  # Start with checksum
+
+    # Add all binary data
+    total_sum += sum(binary_to_decimal(data) for data in data_list)
+
+    # If sum exceeds 8 bits, wrap around
+    while total_sum > 0xFF:
+        total_sum = (total_sum & 0xFF) + (total_sum >> 8)
+
+    # Check if result is all 1s (255 in decimal or 0xFF)
+    return total_sum == 0xFF
+
+# Main program
+n = int(input("Enter the number of data items: "))
+
+data_list = []
+for i in range(n):
+    binary_data = input(f"Enter binary data {i + 1}: ")
+    
+    if len(binary_data) != 8 or not all(bit in '01' for bit in binary_data):
+        print("Error: Binary data must be exactly 8 bits (0s and 1s).")
+        exit(1)
+    
+    data_list.append(binary_data)
+
+# Calculate checksum
+checksum = calculate_checksum(data_list)
+print("UDP Checksum:", checksum)
+
+# Verify checksum
+if verify_checksum(data_list, checksum):
+    print("Checksum veTakes the 1's complement to get the checksum.")
+
+
+
+#2. Checksum Verification:
+
+#Adds the checksum to the original sum.
+if verify_checksum(data_list,checksum):
+    print("checksum verification successful! Data is valid.")
+else:
+    print("Checksum verification failed! Data is corrupted")
+
+    </pre>
+ 
+ 
 </body>
 </html>
