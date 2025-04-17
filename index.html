@@ -366,6 +366,199 @@ else:
     print("Checksum verification failed! Data is corrupted")
 
     </pre>
+    <h1>FCFS (First-Come, First-Served) Scheduling Algorithm</h1>
+    <p>The following C program implements the FCFS scheduling algorithm.</p>
+    <pre>
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Sample data of employee salaries
+emp_data = {'empid':[100,101,103,104],
+             'empname': ['Ganesh', 'Gowri', 'Deeksha', 'Aadhya'],
+            'salary': [6000, 4000, 3000, 2000]}
+
+# Create DataFrame from the sample data
+df = pd.DataFrame(emp_data)
+
+# Define x and y labels from DataFrame
+x = df['empid']
+y = df['salary']
+
+# Plot the bar graph
+plt.bar(x, y,label="empdata", color='red')
+
+# Label the axes
+plt.xlabel('Empid')
+plt.ylabel('Salary')
+
+# Title of the graph
+plt.title('apgccs')
+#plt.legend()
+# Display the graph
+plt.show()
+# Is the above code execute in this  version
+
+#import pandas as pd
+import matplotlib.pyplot as plt
+
+# Sample data for employees across multiple departments
+x= ['raju', 'ramu', 'rajesh', 'harini']
+y= [8000, 9050, 4600, 6800]
+x1= ['siva', 'rohini', 'rupesh', 'rani']
+y1 = [6000, 7000, 5040, 3900]
+# Adding title, labels, and legend
+plt.bar(x,y,label='engineering dept',color='red')
+plt.bar(x1,y1,label='production dept',color='blue')
+plt.xlabel('Empname')
+plt.ylabel('sales')
+plt.title('apgccs')
+plt.legend()
+
+# Display the graph
+plt.show()
+
+
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Data from the image
+regions = ['East', 'West', 'South', 'North', 'South East', 'North East']
+Q1_sales = [16000, 24000, 32000, 14000, 18000, 36000]
+Q2_sales = [9000, 12000, 8000, 14000, 16000, 11000]
+Q3_sales = [9600, 8900, 12400, 14600, 13400, 9800]
+
+# Set the bar width
+bar_width = 0.25
+
+# Set the position of the bars
+r1 = range(len(regions))
+r2 = [x + bar_width for x in r1]
+r3 = [x + bar_width for x in r2]
+
+# Create the bar graph
+plt.bar(r1, Q1_sales, color='red', width=bar_width, label='Q1')
+plt.bar(r2, Q2_sales, color='blue', width=bar_width, label='Q2')
+plt.bar(r3, Q3_sales, color='green', width=bar_width, label='Q3')
+
+# Add labels, title, and legend
+plt.xlabel('Regions', fontweight='bold')
+plt.ylabel('Sales', fontweight='bold')
+plt.title('Sales in 3 Quarters of a Year')
+plt.xticks([r + bar_width for r in range(len(regions))], regions)
+plt.legend()
+
+# Display the graph
+plt.show()
+
+
+import matplotlib.pyplot as plt
+
+# Data: Representing percentages of marks obtained by students
+marks = [45, 50, 55, 60, 65, 70, 75, 80, 45, 60, 70, 65, 75, 50, 55, 40, 60, 80, 70, 50]
+
+# Define bins for mark ranges
+bins = [40, 50, 60, 70, 80]
+
+# Create histogram
+plt.hist(marks, bins, histtype='bar', rwidth=0.8, color='green')
+
+# Add labels and title
+plt.xlabel('Percentage of Marks')
+plt.ylabel('Number of Students')
+plt.title('Distribution of Marks Among Students')
+
+# Show the graph
+plt.legend(['Marks Range'])  # Add legend
+plt.show()
+
+
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Employee ages data
+empages = [34, 16, 18, 28, 36, 42, 38, 28, 29, 36, 48]
+
+# Define bins for age groups
+bins = [0, 10, 20, 30, 40, 50]
+
+# Create histogram
+plt.hist(empages, bins, histtype='bar', rwidth=0.8, color='red')
+
+# Add labels and title
+plt.xlabel('Employee Ages')
+plt.ylabel('Number of Employees')
+plt.title('Distribution of Employee Ages')
+
+# Show the graph
+plt.legend(['Ages'])  # Add legend
+plt.show()
+
+
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Sample data of employee salaries in different departments
+emp_data = {
+    'empname': ['Ganesh', 'Gowri', 'Deeksha', 'Aadhya'],
+    'dept1_salary': [6000, 4000, 3000, 2000],
+    'dept2_salary': [7000, 5000, 3500, 2500]
+}
+
+# Create DataFrame from the sample data
+df = pd.DataFrame(emp_data)
+
+# Define the bar width
+bar_width = 0.35
+
+# Positions for the bars
+positions1 = range(len(df['empname']))
+positions2 = [x + bar_width for x in positions1]
+
+# Plotting bar graph for each department
+plt.bar(positions1, df['dept1_salary'], width=bar_width, color='red', label='Department 1')
+plt.bar(positions2, df['dept2_salary'], width=bar_width, color='blue', label='Department 2')
+
+# Adding labels, title, and legend
+plt.xlabel('Employees')
+plt.ylabel('Salary')
+plt.title('Employee Salaries Comparison')
+plt.xticks([x + bar_width / 2 for x in positions1], df['empname'])
+plt.legend()
+
+# Display the bar graph
+plt.show()
+
+
+import  pandas as pd
+dataframe=pd.read_csv("employee.csv")
+print(dataframe)
+
+import pandas as pd
+data_tuples = {
+    ('East', 16,26,36.46),
+    ('West', 15, 25, 35, 45),
+    ('South', 15,25,35,45),
+    ('North', 14,24,34,44),
+    ('South East', 13,23.33,43),
+    ('North East', 12,22,32,42),
+    ('South West', 11,21,31,41),
+    ('North West', 10,20,30,40)
+}
+
+df_from_tuples = pd.DataFrame(data_tuples, columns=['Region', 'Q1', 'Q2', 'Q3', 'Q4'])
+print(df_from_tuples)
+
+import pandas as pd
+data_dict={
+'region':['east','west','south','north','southeast','northeast','southwest','northwest'],
+'q1':[10,20,30,40,50,60,70,80],
+'q2':[90,100,110,120,130,140,150,160],
+'q3':[170,180,190,200,210,220,230,240],
+'q4':[250,260,270,280,290,300,310,320]
+}
+df_from_dict=pd.DataFrame(data_dict)
+print(df_from_dict)
+    </pre>
  
  
 </body>
